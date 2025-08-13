@@ -11,14 +11,14 @@ namespace UdemyCarBook.Persistence
         public CarBookContext CreateDbContext(string[] args)
         {
             var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory()) // appsettings.json burada olmalı
+                .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            var optionsBuilder = new DbContextOptionsBuilder<CarBookContext>(); // ✅ DÜZGÜN TÜR
+            var optionsBuilder = new DbContextOptionsBuilder<CarBookContext>();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            optionsBuilder.UseSqlite(connectionString); 
+            optionsBuilder.UseSqlite(connectionString);
 
             return new CarBookContext(optionsBuilder.Options);
         }
